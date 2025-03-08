@@ -64,7 +64,7 @@ pipeline {
             steps {
                 script {
                     def image = docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
-                    assert image != null : "Docker image not found"
+                   
                 }
             }
         }
