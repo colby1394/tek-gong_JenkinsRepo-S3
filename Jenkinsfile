@@ -72,9 +72,9 @@ pipeline {
             steps {
                 cleanWs()
                 sh '''
-                    docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
+                    docker run --user $(id -u) -v /tmp:/tmp:rw \
                     -e BURP_START_URL=https://ginandjuice.shop/ \
-                    -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
+                    -e BURP_REPORT_FILE_PATH=/tmp/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
                 
