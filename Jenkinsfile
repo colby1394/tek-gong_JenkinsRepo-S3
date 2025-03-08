@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_REGION = 'us-west-2' 
+        AWS_REGION = 'us-east-1' 
     }
     stages {
 
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/colby1394/learn-terraform-github-actions2.git' 
+                git branch: 'main', url: 'https://github.com/colby1394/learn-terraform-github-actions2.git'
             }
         }
         stage('Initialize Terraform') {
@@ -98,9 +98,7 @@ pipeline {
         }
     }
     post {
-        always {
-            junit testResults: 'dastardly-report.xml', skipPublishingChecks: true
-        }
+       
         success {
             echo 'Terraform deployment completed successfully!'
         }
