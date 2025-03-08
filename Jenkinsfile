@@ -63,7 +63,7 @@ pipeline {
         stage ("Docker Pull Dastardly from Burp Suite container image") {
             steps {
                 script {
-                    def image = docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
+                        docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
                    
                 }
             }
@@ -77,6 +77,7 @@ pipeline {
                     -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
+                
             }
         }
 
