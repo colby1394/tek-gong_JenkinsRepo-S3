@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/aaron-dm-mcdonald/jenkins-ec2.git' 
+                git branch: 'main', url: 'https://github.com/colby1394/learn-terraform-github-actions2.git' 
             }
         }
         stage('Initialize Terraform') {
@@ -63,7 +63,7 @@ pipeline {
         stage ("Docker Pull Dastardly from Burp Suite container image") {
             steps {
                 script {
-                        docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
+                    docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
                    
                 }
             }
