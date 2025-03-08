@@ -62,7 +62,10 @@ pipeline {
         
         stage ("Docker Pull Dastardly from Burp Suite container image") {
             steps {
-                sh 'docker pull public.ecr.aws/portswigger/dastardly:latest'
+                script {
+                    def image = docker.image('public.ecr.aws/portswigger/dastardly:latest').pull()
+                    assert image != null : "Docker image not found"
+                }
             }
         }
         stage ("Docker run Dastardly from Burp Suite Scan") {
@@ -76,7 +79,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage ('Destroy Terraform') {
             steps {
                 input message: "Do you want to destroy the infrastructure?", ok: "Destroy"
