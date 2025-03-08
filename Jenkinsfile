@@ -9,7 +9,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-credential' 
+                    credentialsId: 'AWS_SECRET_ACCESS_KEY' 
                 ]]) {
                     sh '''
                     echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-credential'
+                    credentialsId: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                     export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
@@ -49,7 +49,7 @@ pipeline {
                 input message: "Approve Terraform Apply?", ok: "Deploy"
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-credential'
+                    credentialsId: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                     export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
@@ -86,7 +86,7 @@ pipeline {
                 input message: "Do you want to destroy the infrastructure?", ok: "Destroy"
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-credential'
+                    credentialsId: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                     export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
